@@ -1,14 +1,20 @@
 'use strict';
 
 const eventPool = require('./eventPool');
+const { initiateOrder, confirmOrder } = require('./vendor/vendorHandler');
+const { inTransit, pickup, delivered } = require('./event/eventHandler');
 const driverHandler = require('./driver/driverHandler');
-const vendorHandler = require('./vendor/vendorHandler');
 
 
-eventPool.on('NEW_CUSTOMER_ORDER', vendorHandler);
+eventPool.on('NEW_CUSTOMER_ORDER', initiateOrder);
+eventPool.on('PICKUP', pickup);
 eventPool.on('PICKUP', driverHandler);
-// eventPool.on('DILATION', pupilHandler);
-// eventPool.on('SHIELD_EYES', handHandler);
+eventPool.on('IN_TRANSIT', inTransit);
+eventPool.on('DELIVERED', delivered);
+eventPool.on('DELIVERED', confirmOrder);
+
+
+
 
 function customerOrder () {
   const payload = {text: 'New Customer Order'};
@@ -23,22 +29,3 @@ setInterval(() => {
 
 
 
-// Vendor
-// -emit: I want to alert the system when I have a package to be picked up.
-// -on: As a vendor, I want to be notified when my package has been delivered.
-
-// Driver
-// -on: I want to be notified when there is a package to be delivered.
-// -emit: I want to alert the system when a package has been delivered.
-// -emit:  I want to alert the system when I have picked up a package and it is in transit.
-
-
-
-// Events
-// (1) package to be picked up
-// vendor.emit
-// driver.on
-// (2) package delivered
-// driver.emit
-// vendor.on
-// (3) picked up and in transit

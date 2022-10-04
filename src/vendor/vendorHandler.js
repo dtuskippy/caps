@@ -1,26 +1,31 @@
 'use strict';
 
+const Chance = require('chance');
+var chance = new Chance();
 let eventPool = require('../eventPool');
 
-module.exports = (payload) =>  {
+
+
+function initiateOrder(payload) {
   setTimeout(() => {
 
     console.log('VENDOR_HERE!', payload);
     let orderPayload = {
-        store: 'Kaufland',
-        orderId: 36161756,
-        customer: 'Gizmo Domingo',
-        address: '445 Mt. Nebu'
-     };
+        store: chance.company(),
+        orderId: chance.integer({ min: 100000, max: 999999 }),
+        customer: chance.first() + ' ' + chance.last(),
+        address: chance.address()
+         };
 
      eventPool.emit('PICKUP', orderPayload);
 
-
-    //  if(payload.brightness > 50){
-    //    eventPool.emit('DILATION', 'close');
-    //    eventPool.emit('SHIELD_EYES', 'use hand to shield eyes from brightness')
-    //  } else {
-    //    eventPool.emit('DILATION', 'open');
-    //  }
-  }, 2000)
+  }, 1000)
 };
+
+function confirmOrder(payload) {
+    setTimeout(() => {
+      console.log('Thank you, ', payload.customer);
+    }, 500)
+  };
+
+module.exports = { initiateOrder, confirmOrder };
