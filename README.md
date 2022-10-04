@@ -16,7 +16,7 @@
 
 ### Deployed server
 
-    * Heroku: [chelko-basic-api-server-prod](https://dashboard.heroku.com/apps/chelko-bearer-auth-prod/)
+    * Heroku: [chelko-basic-api-server-prod](https://dashboard.heroku.com/apps/chelko-caps-prod/)
 
 ### Running the app
 
