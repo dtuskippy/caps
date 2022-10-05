@@ -4,6 +4,8 @@
 
 ### Author: Alan Chelko
 
+### Collaborator: Ryan Gallaway (refactoring during code review)
+
 ### Problem Domain
 
     * CAPS Phase 1: Begin the build of an application for a product called CAPS - The Code Academy Parcel Service. In this sprint, we're building out a system that emulates a real world supply chain.
