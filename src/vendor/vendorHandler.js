@@ -4,6 +4,8 @@ const Chance = require('chance');
 var chance = new Chance();
 let eventPool = require('../eventPool');
 
+eventPool.on('NEW_CUSTOMER_ORDER', initiateOrder);
+eventPool.on('DELIVERED', confirmOrder);
 
 
 function initiateOrder(payload) {
@@ -28,4 +30,18 @@ function confirmOrder(payload) {
     }, 500)
   };
 
+function customerOrder () {
+  const payload = {text: 'New Customer Order'};
+  eventPool.emit('NEW_CUSTOMER_ORDER', payload);
+}
+
+
+setInterval(() => {
+  console.log('---------new order process begins---------');
+  customerOrder();
+}, 4000);
+
 module.exports = { initiateOrder, confirmOrder };
+
+
+

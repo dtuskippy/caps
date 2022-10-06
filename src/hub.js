@@ -1,30 +1,20 @@
 'use strict';
 
 const eventPool = require('./eventPool');
-const { initiateOrder, confirmOrder } = require('./vendor/vendorHandler');
-const { inTransit, pickup, delivered } = require('./event/eventHandler');
-const driverHandler = require('./driver/driverHandler');
+require('./vendor/vendorHandler');
+require('./driver/driverHandler');
 
+eventPool.on('PICKUP', (payload) => logEvent('PICKUP', payload));
+eventPool.on('IN_TRANSIT', (payload) => logEvent('IN_TRANSIT', payload));
+eventPool.on('DELIVERED', (payload) => logEvent('DELIVERED', payload));
 
-eventPool.on('NEW_CUSTOMER_ORDER', initiateOrder);
-eventPool.on('PICKUP', pickup);
-eventPool.on('PICKUP', driverHandler);
-eventPool.on('IN_TRANSIT', inTransit);
-eventPool.on('DELIVERED', delivered);
-eventPool.on('DELIVERED', confirmOrder);
-
-
-
-
-function customerOrder () {
-  const payload = {text: 'New Customer Order'};
-  eventPool.emit('NEW_CUSTOMER_ORDER', payload);
+function logEvent(event, payload) {
+  const date = new Date();
+  const time = date.toTimeString();
+  console.log('EVENT', {event, time, payload});
 }
 
-setInterval(() => {
-  console.log('---------new order process begins---------');
-  customerOrder();
-}, 4000);
+
 
 
 
