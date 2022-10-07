@@ -4,6 +4,8 @@
 
 ### Author: Alan Chelko
 
+### Collaborator: Ryan Gallaway (refactoring during code review)
+
 ### Problem Domain
 
     * CAPS Phase 2: Continue working on a multi-day build of our delivery tracking system, creating an event observable over a network with Socket.io.

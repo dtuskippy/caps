@@ -30,6 +30,3 @@ function logEvent(event, payload) {
   const time = date.toTimeString();
   console.log('EVENT', {event, time, payload});
 }
-
-
-

@@ -20,6 +20,3 @@ function initiatePickup(socket) {
 };
 
 module.exports = initiatePickup;
-
-
-
