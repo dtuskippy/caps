@@ -1,4 +1,4 @@
-# Lab-11
+# Lab-12
 
 ## CAPS
 
@@ -8,26 +8,20 @@
 
 ### Problem Domain
 
-    * CAPS Phase 1: Begin the build of an application for a product called CAPS - The Code Academy Parcel Service. In this sprint, we're building out a system that emulates a real world supply chain.
-    * CAPS will simulate a delivery service where vendors (such a flower shops) will ship products using our delivery service and when our drivers deliver them, each vendor will be notified that their customers received what they purchased.
-    * This will be an event driven application that “distributes” the responsibility for logging to separate modules, using only events to trigger logging based on activity.
+    * CAPS Phase 2: Continue working on a multi-day build of our delivery tracking system, creating an event observable over a network with Socket.io.
+    * In this phase, we’ll be moving away from using Node Events for managing a pool of events, instead refactoring to using the Socket.io libraries. This allows communication between Server and Client applications.
+    * The intent here is to build the data services that would drive a suite of applications where we can see pickups and deliveries in real-time.
 
 ### Setup
 
     * PORT: 3001
 
-### Deployed server
-
-    * Heroku: [chelko-basic-api-server-prod](https://dashboard.heroku.com/apps/chelko-caps-prod/)
-
 ### Running the app
 
-    * node srd/node.js (runs the following event order process)
+    * node src/hub.js (to run the socket server)
+    * node src/vendor/index.js (to run the vendor client-side)
+    * node src/driver/index.js (to run the drive client-side)
 
-![UML - Lab 011](images/event-order-process.png)
+### UML: Socket-io -- Lab 12
 
-
-
-### UML: Basic Auth Server -- Lab 06 UML
-
-![UML - Lab 011](images/caps-events.png)
+![UML - Lab 12](images/socket-io.png)
