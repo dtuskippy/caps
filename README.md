@@ -2,7 +2,7 @@
 
 ## CAPS
 
-### Author: Alan Chelko
+### Author: Alan Chelko XX
 
 ### Collaborator: Ryan Gallaway (refactoring during code review)
 
